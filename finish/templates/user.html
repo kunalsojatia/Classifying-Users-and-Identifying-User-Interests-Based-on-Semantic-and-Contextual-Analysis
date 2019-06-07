@@ -1,0 +1,47 @@
+<link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
+
+
+
+<!doctype html>
+<html>
+   <body>
+
+   <h1>Promotional</h1>
+      <table border = 1>
+         {% for key, value in output[0].items() %}
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+          
+         {% endfor %}
+      </table>
+
+
+<h1>Abusive</h1>
+      <table border = 1>
+         {% for key, value in output[1].items() %}
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+           
+         {% endfor %}
+      </table>
+
+
+<h1>Aggressive</h1>
+
+
+<table border = 1>
+         {% for key, value in output[2].items() %}
+            <tr>
+               <th> {{ key }} </th>
+               <td> {{ value }} </td>
+            </tr>
+         
+         {% endfor %}
+      </table>
+
+   </body>
+</html>

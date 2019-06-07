@@ -1,0 +1,263 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Demo App
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
+{% endblock %}
+
+{% block content %}
+    
+<style>
+/* The Modal (background) */
+.kunal{
+  padding-top: 0px; 
+}
+div{
+  padding-top: 0px; 
+}
+header
+{
+  padding-top: 0px; 
+}
+.wrapper{
+  padding-top: 0px; 
+}
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content */
+.modal-content {
+  background-color: black;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%;
+
+}
+
+/* The Close Button */
+.close {
+  color: #aaaaaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+</style>    
+<html>
+  <head class="kunal">
+    <title>User Classification</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    
+  </head>
+  <body class="kunal">
+
+    <!-- Wrapper -->
+      <div id="wrapper">
+
+        <!-- Header -->
+          <header id="header">
+            <div class="logo">
+              <span class="icon fa-diamond"></span>
+            </div>
+            <div class="content">
+              <div class="inner">
+                <h2>Classifying Users and Identifying User Interests based on Semantic and Contextual Analysis</h2>
+                <p></p>
+              </div>
+            </div>
+            <nav>
+              <ul>
+                <li><button class="button" id="myBtn1" data-modal="modalOne"><b>About</b></button></button>
+</li>
+                <li><button class="button" id="myBtn2" data-modal="modalTwo"><b>Work</b></button></li>
+
+
+                <li><button class="button" id="myBtn3" data-modal="modalThree"><b>Technologies Used</b></button></li>
+
+
+                 
+                <!--<li><a href="#elements">Elements</a></li>-->
+              </ul>
+              <br>
+              <form method="POST" action="/analytics" id='form1'>
+              <input type="submit" value="User Analytics" class="primary" formaction="/analytics" />
+              </form>
+            </nav>
+          </header>
+
+
+
+<!-- The Modal -->
+<div id="modalOne" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+                <h2 class="major">About</h2>
+                
+                <p>With the development of the Internet, a more personalised and customized service is expected from service providers. The analysis of user behaviour and interests can be done to achieve the same. Social networks can help provide a deeper insight into the user and his/her activities, the knowledge of data mining is used to analyze the degree of the user interest. The proposed system utilizes Natural Language Processing techniques to extract and process relevant data from large user interaction datasets acquired from social networks. That data further is used for accurate user behaviour and interest analysis by employing machine learning techniques. We examine the conversations of every user to determine their interests in various fields, as well as perform contextual analysis to infer about his/her stand in respective conversations. Such behavioural information will be used for probabilistic classification of users into predetermined buckets. User characteristics upon which classification is to performed is obtained by supervised and unsupervised algorithms. After identifying the distinct categories to classify users into, we can successfully segregate them. This proposed system is useful for personalised notification feed generation according to behaviour and interests.</p>
+  </div>
+
+</div>
+
+
+
+<!-- The Modal -->
+<div id="modalTwo" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+                <h2 class="major">Work</h2>
+                
+                <p>
+                <ul>
+                <li>We scraped comments from Youtube related to various videos of varying fields of interest.</li>
+                <li>Pre-processing techniques were applied to the obtained dataset such as tokenization, stop words removal, lemmatization and so on using NLTK and Gensim toolkits. NLTK proved out to be the best in its class owing to its wide variety of available operations.</li>
+                <li>After numerous rounds of prototyping we ascertained that LSTM is the most suitable fit for our work. LSTM stands for Long Short Term Memory, and is a neural network which tries overcomes the shortcomeings of Recurrent Neural Networks(RNN).</li>
+
+                </ul>
+                </p>
+  </div>
+
+</div>
+
+
+
+
+<!-- The Modal -->
+<div id="modalThree" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+                <h2 class="major">Technologies Used</h2>
+                
+                <p>
+                <ul>
+                 <li>NLTK</li> 
+                 <li>LSTM</li>
+                 <li>Flask</li>
+                 <li>Tensorflow</li>
+                 <li>Keras</li>
+                </ul>  
+                </p>
+  </div>
+
+</div>
+
+
+
+
+
+
+<!-- The Modal -->
+<div id="modalFour">
+
+  <!-- Modal content -->
+  <div>
+    
+                <h2 class="major" align="center"><br><br><br><br><br>        Custom Text</h2>
+                
+               <form method="POST" action="/answer" id='FormOfInterest'>
+                  <div class="fields">
+                    <div class="field half">
+                      <label for="user">Username</label>
+                      <input type="text" name="user" id="user" />
+                    </div>
+                    
+                    <div class="field">
+                      <label for="query">Message</label>
+                      <textarea name="query" id="query" rows="2"></textarea>
+                    </div>
+                   
+                    <div class="field" id="spaceforop">
+                      <label for="output">Output</label>
+                      {{ output }}
+                    </div>
+                    <p>
+
+                    </p>
+                  </div>
+                  <ul class="actions">
+                    <li><input type="submit" value="Promotional" class="primary" formaction="/promo" /></li>
+                    <li><input type="submit" value="Aggressive" class="primary" formaction="/agg"/></li>
+                    <li><input type="submit" value="Abusive" class="primary" formaction="/abu"/></li>
+                   <li><input type="submit" value="All" class="primary" formaction="/all"/></li>
+
+                    <li><input type="reset" value="Reset" /></li>
+                  </ul>
+                </form>
+  </div>
+
+</div>
+          
+
+<script>
+var modalBtns = [...document.querySelectorAll(".button")];
+modalBtns.forEach(function(btn){
+  btn.onclick = function() {
+    var modal = btn.getAttribute('data-modal');
+    document.getElementById(modal).style.display = "block";
+  }
+});
+
+var closeBtns = [...document.querySelectorAll(".close")];
+closeBtns.forEach(function(btn){
+  btn.onclick = function() {
+    var modal = btn.closest('.modal');
+    modal.style.display = "none";
+  }
+});
+
+window.onclick = function(event) {
+  if (event.target.className === "modal") {
+    event.target.style.display = "none";
+  }
+}
+
+/*
+$('#FormOfInterest').on('submit', function(event){
+  event.preventDefault();
+
+  $.ajax({
+    'data': 
+  })
+
+})
+*/
+</script>
+
+
+
+
+</body>
+</html>
+
+
+
+
+{% endblock %}

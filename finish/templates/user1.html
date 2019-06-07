@@ -1,0 +1,8 @@
+<link rel="stylesheet" href="{{url_for('.static', filename='main.css')}}">
+<label id="value_lable">
+<p><font size="6"><b>   
+   {% for i in range(3): %}
+          {{ output[i] }}
+    {% endfor%}
+</b></font></p>    
+</label>

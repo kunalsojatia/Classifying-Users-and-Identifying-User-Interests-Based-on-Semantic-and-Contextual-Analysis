@@ -1,0 +1,23 @@
+{% extends "bootstrap/base.html" %}
+
+{% block title %}
+Demo App
+{% endblock %}
+
+{% block styles %}
+{{super()}}
+<link rel="stylesheet" href="{{url_for('.static', filename='starter-template.css')}}">
+{% endblock %}
+
+{% block content %}
+
+<form action="/answer" method="POST">
+<input type="text" name="user">
+<input type="text" name="query">
+<input type="submit" value="promo" name="promo" formaction="/promo">
+<input type="submit" value="promo" name="abusive" formaction="/abusive">
+<input type="submit" name="helpful" value="helpful" formaction="/helpful">
+<input type="submit" name="aggressive" value="aggressive" formaction="/aggressive">
+{{answer}}
+</form>
+{% endblock %}
